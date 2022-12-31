@@ -244,7 +244,7 @@ class Home extends Component {
 
     return (
       <>
-        <div className="stats-block-column">
+        <div testid="countryWideConfirmedCases" className="stats-block-column">
           <p className="stats-title red">Confirmed</p>
           <img
             src="https://res.cloudinary.com/amst/image/upload/v1639929248/conf_cof3e9.jpg"
@@ -254,7 +254,7 @@ class Home extends Component {
           <p className="stats-number red">{totalConfirmedCases}</p>
         </div>
 
-        <div className="stats-block-column">
+        <div testid="countryWideActiveCases" className="stats-block-column">
           <p className="stats-title blue">Active</p>
           <img
             src="https://res.cloudinary.com/amst/image/upload/v1639929248/act_kq7nfx.jpg"
@@ -264,7 +264,7 @@ class Home extends Component {
           <p className="stats-number blue">{totalActiveCases}</p>
         </div>
 
-        <div className="stats-block-column">
+        <div testid="countryWideRecoveredCases" className="stats-block-column">
           <p className="stats-title green">Recovered</p>
           <img
             src="https://res.cloudinary.com/amst/image/upload/v1639929248/uyf_ndpqov.jpg"
@@ -274,7 +274,7 @@ class Home extends Component {
           <p className="stats-number green">{totalRecoveredCases}</p>
         </div>
 
-        <div className="stats-block-column ">
+        <div testid="countryWideDeceasedCases" className="stats-block-column ">
           <p className="stats-title gray">Deceased</p>
           <img
             src="https://res.cloudinary.com/amst/image/upload/v1639929248/dese_tgak4e.jpg"
@@ -288,7 +288,10 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="products-details-loader-container loader-container">
+    <div
+      className="products-details-loader-container loader-container"
+      testid="homeRouteLoader"
+    >
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -317,12 +320,13 @@ class Home extends Component {
     const {statesInfo} = this.state
 
     return (
-      <div className="all-states-table">
+      <div className="all-states-table" testid="stateWiseCovidDataTable">
         <div className="table-header">
           <div className="state-name-heading">
             <button
               className="order"
               type="button"
+              testid="ascendingSort"
               onClick={this.whenAscendingSortButtonClicked}
             >
               <FcGenericSortingAsc className="order-icon" />
@@ -331,6 +335,7 @@ class Home extends Component {
             <button
               className="order"
               type="button"
+              testid="descendingSort"
               onClick={this.whenDescendingSortButtonClicked}
             >
               <FcGenericSortingDesc className="order-icon" />
@@ -382,12 +387,16 @@ class Home extends Component {
     const {filteredSearchList} = this.state
 
     return (
-      <ul className="search-result-container">
+      <ul
+        className="search-result-container"
+        testid="searchResultsUnorderedList"
+      >
         {filteredSearchList.map(each => (
           <SearchResult
             key={each.state_code}
             stateName={each.state_name}
             stateCode={each.state_code}
+            id={each.state_code}
           />
         ))}
       </ul>
