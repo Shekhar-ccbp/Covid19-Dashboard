@@ -403,10 +403,6 @@ class Home extends Component {
     )
   }
 
-  removeFilteredList = () => {
-    this.setState({filteredSearchList: []})
-  }
-
   render() {
     const {isLoading, filteredSearchList, search} = this.state
     const showSearchList =
@@ -423,7 +419,6 @@ class Home extends Component {
                 placeholder="Enter the State"
                 className="search-bar"
                 onChange={this.searchStarted}
-                onBlur={this.removeFilteredList}
               />
             </div>
             {search.length > 0 ? showSearchList : ''}
